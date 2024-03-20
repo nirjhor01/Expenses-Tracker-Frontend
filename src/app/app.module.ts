@@ -8,7 +8,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, provideHttpClient } from '@angular/common/http';
 import { ExpenditureComponent } from './components/expenditure/expenditure.component';
 import { LoginComponent } from './components/login/login.component';
-import { LastexpenseComponent } from './components/lastexpense/lastexpense.component';
+import { TotalsumComponent } from './components/totalsum/totalsum.component';
+
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { LastexpenseComponent } from './components/lastexpense/lastexpense.compo
     PercentageComponent,
     ExpenditureComponent,
     LoginComponent,
-    LastexpenseComponent
+    TotalsumComponent,
+
   ],
   imports: [
     BrowserModule,

@@ -15,7 +15,7 @@ export class PercentageComponent implements OnInit, OnDestroy {
   private subscription: Subscription | undefined;
   constructor(private expenseTrackerService: ExpensetrackerService) { }
 
-  
+
 
   ngOnInit(): void {
     // Initialize userId to undefined
@@ -28,7 +28,7 @@ export class PercentageComponent implements OnInit, OnDestroy {
       return;
     }
 
-    this.subscription = this.expenseTrackerService.GetPercentage(this.userId).subscribe({
+    this.expenseTrackerService.GetPercentage(this.userId).subscribe({
       next: (percentages: Percentage[]) => {
         console.log(percentages);
         this.expensePercentages = percentages;
@@ -40,7 +40,7 @@ export class PercentageComponent implements OnInit, OnDestroy {
     });
   }
 
-  
+
 
   ngOnDestroy(): void {
     // Unsubscribe from the subscription to prevent memory leaks

@@ -49,7 +49,24 @@ export class ExpensetrackerService {
       })
     );
   }
+
   
 
+  logIn(userName: string, password: string): Observable<any> {
+    return this.http.get<any>(`${this.baseApiUrl}/api/Auth/LogIn?UserName=${userName}&PassWord=${password}`).pipe(
+      map((response: any) => {
+        console.log('response from service='+response);
+        return response;
+      })
+    );
+  }
 
+  GettotalSum(userId: number, fromDate: Date, toDate:Date): Observable<any> {
+    return this.http.get<any>(`${this.baseApiUrl}/api/User/GetTotalSum?UserId=${userId}&fromDate=${fromDate}&toDate=${toDate}`).pipe(
+      map((response: any) => {
+        console.log('response from service='+response);
+        return response;
+      })
+    );
+  }
 }

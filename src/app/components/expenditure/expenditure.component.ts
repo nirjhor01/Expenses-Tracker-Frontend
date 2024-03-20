@@ -25,7 +25,7 @@ export class ExpenditureComponent implements OnInit, OnDestroy {
       return;
     }
 
-    this.subscription = this.expenseTrackerService.GetAllExpenditure(this.userId).subscribe({
+     this.expenseTrackerService.GetAllExpenditure(this.userId).subscribe({
       next: (expenditures: Expenditure[]) => {
         console.log(expenditures);
         this.expenditure = expenditures;

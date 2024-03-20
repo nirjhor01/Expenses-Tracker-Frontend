@@ -1,15 +1,15 @@
-<form #form="ngForm" (ngSubmit)="GetAllExpenditure()" class="mt-4" style="width: 500px !important;">
-    <label for="userId">Enter User ID:</label>
-    <input type="number" id="userId" name="userId" [(ngModel)]="userId">
-    <button type="submit">Expenses</button>
-  </form>
-  
-  <div *ngIf="expenditure">
-    <h3>expenditure</h3>
-    <ul>
-      <li *ngFor="let item of expenditure">
-        {{ item.Category }}:{{item.Amount}}
-      </li>
-    </ul>
-  </div>
-  
+<form #form="ngForm" (ngSubmit)="GetAllExpenditure()" class="mt-4 form-container">
+  <label for="userId">Enter User ID:</label>
+  <input type="number" id="userId" name="userId" [(ngModel)]="userId" class="user-input">
+  <br> <!-- Add a line break to move the button to the next line -->
+  <button type="submit" class="submit-button danger">Expenses</button>
+</form>
+
+<div *ngIf="expenditure" class="expenditure">
+  <h3 class="header">Expenditure</h3>
+  <ul class="expenditure-list">
+    <li *ngFor="let item of expenditure" class="list-item">
+      <span class="category">{{ item.Category }}</span>: <span class="amount">{{ item.Amount }}</span>
+    </li>
+  </ul>
+</div>

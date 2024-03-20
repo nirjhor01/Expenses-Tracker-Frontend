@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LastexpenseComponent } from './lastexpense.component';
+import { TotalsumComponent } from './totalsum.component';
 
-describe('LastexpenseComponent', () => {
-  let component: LastexpenseComponent;
-  let fixture: ComponentFixture<LastexpenseComponent>;
+describe('TotalsumComponent', () => {
+  let component: TotalsumComponent;
+  let fixture: ComponentFixture<TotalsumComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [LastexpenseComponent]
+      declarations: [TotalsumComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(LastexpenseComponent);
+    fixture = TestBed.createComponent(TotalsumComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
