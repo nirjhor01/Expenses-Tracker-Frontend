@@ -46,6 +46,8 @@ export class ExpensetrackerService {
             Note: item.note
           } as Expenditure;
         });
+
+
       })
     );
   }
@@ -69,4 +71,19 @@ export class ExpensetrackerService {
       })
     );
   }
+
+  GetCategorySum(userId:number, category: string,fromDate: Date, toDate:Date ): Observable<any>{
+    return this.http.get<any>(`${this.baseApiUrl}/api/User/categorySum?UserId=${userId}&Category=${category}&FromDate=${fromDate}&ToDate=${toDate}`).pipe(
+      map((response: any) => {
+        console.log('responses message = '+ response.sum);
+        
+       return {
+        info: response.info,
+        sum: response.sum
+        };
+        
+      }) 
+    );
+  }
+  
 }

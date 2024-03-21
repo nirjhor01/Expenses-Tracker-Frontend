@@ -6,7 +6,7 @@
 </form>
 
 <div *ngIf="expenditure" class="expenditure">
-  <h3 class="header">Expenditure</h3>
+  <h3 class="header">Expenditure :</h3>
   <ul class="expenditure-list">
     <li *ngFor="let item of expenditure" class="list-item">
       <span class="category">{{ item.Category }}</span>: <span class="amount">{{ item.Amount }}</span>

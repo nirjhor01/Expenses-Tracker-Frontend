@@ -10,6 +10,8 @@ import { ExpenditureComponent } from './components/expenditure/expenditure.compo
 import { LoginComponent } from './components/login/login.component';
 import { TotalsumComponent } from './components/totalsum/totalsum.component';
 
+import { CategorysumComponent } from './components/categorysum/categorysum.component';
+
 
 
 @NgModule({
@@ -19,6 +21,7 @@ import { TotalsumComponent } from './components/totalsum/totalsum.component';
     ExpenditureComponent,
     LoginComponent,
     TotalsumComponent,
+    CategorysumComponent,
 
   ],
   imports: [

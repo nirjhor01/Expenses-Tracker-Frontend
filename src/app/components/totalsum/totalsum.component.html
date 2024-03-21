@@ -1,6 +1,7 @@
 
   <h2>Total Sum</h2>
 
+  <div class="totalsum">
   <form #form="ngForm" (ngSubmit)="getTotalSum()" class="form-container">
     <div class="form-group">
       <label for="userId">User ID:</label>
@@ -16,6 +17,8 @@
     </div>
     <button type="submit" class="submit-button">Get Total Sum</button>
   </form>
+  </div>
+
 
   <div *ngIf="totalSum !== undefined" class="result">
     <h3>Total Sum: {{ totalSum }}</h3>

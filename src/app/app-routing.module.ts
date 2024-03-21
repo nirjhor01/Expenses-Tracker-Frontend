@@ -5,6 +5,7 @@ import { ExpenditureComponent } from './components/expenditure/expenditure.compo
 import { LoginComponent } from './components/login/login.component';
 import { AppComponent } from './app.component';
 import { TotalsumComponent } from './components/totalsum/totalsum.component';
+import { CategorysumComponent } from './components/categorysum/categorysum.component';
 //import { PercentageComponent } from './percentage/percentage.component';
 
 const routes: Routes = [
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'expenditure', component: ExpenditureComponent },
   { path: 'login', component: LoginComponent},
   { path: 'total', component: TotalsumComponent },
+  { path: 'categorysum', component: CategorysumComponent },
 
 
 ];

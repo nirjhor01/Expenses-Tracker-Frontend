@@ -1,3 +1,4 @@
+<div class="xox">
 <form #form="ngForm" (ngSubmit)="getExpensePercentages()" class="mt-4" style="width: 500px !important;">
   <label for="userId">Enter User ID:</label>
   <input type="number" id="userId" name="userId" [(ngModel)]="userId">
@@ -7,8 +8,9 @@
 <div *ngIf="expensePercentages" class="expercentage">
   <h3>Expense Percentages</h3>
   <ul>
-    <li *ngFor="let item of expensePercentages">
+    <li *ngFor="let item of expensePercentages" class="list">
       {{ item.Category }}: {{ item.Percentage }}
     </li>
   </ul>
+</div>
 </div>

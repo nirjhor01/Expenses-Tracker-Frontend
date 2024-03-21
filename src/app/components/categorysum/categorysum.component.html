@@ -1,0 +1,28 @@
+<div class="container">
+    <h2>{{category}} : </h2>
+  
+    <form #form="ngForm" (ngSubmit)="GetcategorySums()" class="form-container">
+      <div class="form-group">
+        <label for="userId">User ID:</label>
+        <input type="number" id="userId" name="userId" [(ngModel)]="userId" class="user-input" required>
+      </div>
+      <div class="form-group">
+        <label for="category">Category:</label>
+        <input type="text" id="category" name="category" [(ngModel)]="category" class="category-input" required>
+      </div>
+      <div class="form-group">
+        <label for="fromDate">From Date:</label>
+        <input type="date" id="fromDate" name="fromDate" [(ngModel)]="fromdate" class="date-input" required>
+      </div>
+      <div class="form-group">
+        <label for="toDate">To Date:</label>
+        <input type="date" id="toDate" name="toDate" [(ngModel)]="todate" class="date-input" required>
+      </div>
+      <button type="submit" class="submit-button">Get Category Sum</button>
+    </form>
+  
+    <div *ngIf="categorysum" class="result">
+      <h3>{{category}}  Sum: {{ categorysum }}</h3>
+    </div>
+  </div>
+  

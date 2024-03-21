@@ -1,0 +1,43 @@
+.form-container {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8); /* Transparent white background */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .user-input,
+  .category-input,
+  .date-input {
+    padding: 10px;
+    width: calc(100% - 20px);
+    border: 1px solid #ced4da; /* Gray border */
+    border-radius: 5px;
+  }
+  
+  .submit-button {
+    padding: 10px 20px;
+    background-color: #007bff; /* Blue background */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .submit-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+  }
+  
+  .result {
+    margin-top: 20px;
+  }
+  
+  .result h3 {
+    color: #28a745; /* Green text */
+  }
+  
