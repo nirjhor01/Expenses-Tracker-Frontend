@@ -3,12 +3,15 @@ import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
 import { Percentage } from '../models/expensetracker.model';
 import { Expenditure } from '../models/expenditure.model';
+import { Registration } from '../models/registration.model';
+import { Login } from '../models/login.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ExpensetrackerService {
   baseApiUrl: string ="https://localhost:44326";
+
   constructor(private http: HttpClient) { }
   
   GetPercentage(id: number): Observable<Percentage[]> {
@@ -54,14 +57,10 @@ export class ExpensetrackerService {
 
   
 
-  logIn(userName: string, password: string): Observable<any> {
-    return this.http.get<any>(`${this.baseApiUrl}/api/Auth/LogIn?UserName=${userName}&PassWord=${password}`).pipe(
-      map((response: any) => {
-        console.log('response from service='+response);
-        return response;
-      })
-    );
-  }
+
+  
+
+
 
   GettotalSum(userId: number, fromDate: Date, toDate:Date): Observable<any> {
     return this.http.get<any>(`${this.baseApiUrl}/api/User/GetTotalSum?UserId=${userId}&fromDate=${fromDate}&toDate=${toDate}`).pipe(
@@ -85,5 +84,16 @@ export class ExpensetrackerService {
       }) 
     );
   }
+  
+  registerUser(user: Registration): Observable<any> {
+    // Send the user registration data to the server
+    return this.http.post<any>(`${this.baseApiUrl}/api/Auth/Register`, user);
+  }
+
+  loginUser(data: Login): Observable<any> {
+    //const data = { userName, password };
+    return this.http.post<any>(`${this.baseApiUrl}/api/Auth/LogIn`, data);
+  }
+
   
 }

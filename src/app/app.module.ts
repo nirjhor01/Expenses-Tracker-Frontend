@@ -11,7 +11,10 @@ import { LoginComponent } from './components/login/login.component';
 import { TotalsumComponent } from './components/totalsum/totalsum.component';
 
 import { CategorysumComponent } from './components/categorysum/categorysum.component';
-
+import { HomeComponent } from './home/home.component';
+import { RegisterComponent } from './register/register.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { HomeInfoComponent } from './home-info/home-info.component';
 
 
 @NgModule({
@@ -22,6 +25,10 @@ import { CategorysumComponent } from './components/categorysum/categorysum.compo
     LoginComponent,
     TotalsumComponent,
     CategorysumComponent,
+    HomeComponent,
+    RegisterComponent,
+    HomeInfoComponent,
+
 
   ],
   imports: [
@@ -30,6 +37,8 @@ import { CategorysumComponent } from './components/categorysum/categorysum.compo
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    MatSnackBarModule
+    
   ],
   providers: [
     provideClientHydration(),provideHttpClient()

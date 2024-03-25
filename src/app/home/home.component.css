@@ -1,0 +1,72 @@
+/* home.component.css */
+.container {
+    text-align: center;
+    margin-top: 50px;
+  }
+  
+  .button-container {
+    margin-top: 20px;
+  }
+  
+  
+  .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 0 10px;
+    text-decoration: none;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .btn:hover {
+    background-color: #0056b3;
+  }
+  /* Add this CSS to your global styles or component-specific CSS */
+
+.container2{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    background: #AEB6BF;
+    
+    padding: 20px;
+    margin: 100px;
+    cursor: pointer;
+    flex-direction: column;
+  }
+  .p{
+    display: flex;
+    justify-content: center;
+
+  }
+  .bn {
+    padding: 10px 20px;
+    margin: 0 10px;
+    text-decoration: none;
+    color: #000000;
+    background-color: #61AC8E;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    opacity: 0.5;
+  }
+  
+  .bn:hover {
+    background-color: #0056b3;
+  }
+  .utility{
+    flex-direction: row;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+  }
+  .header{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+  }
+
+  

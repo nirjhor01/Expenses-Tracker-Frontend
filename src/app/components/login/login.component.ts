@@ -1,44 +1,64 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ExpensetrackerService } from '../../services/expensetracker.service';
 import { Subscription } from 'rxjs';
+import { Login } from '../../models/login.model';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
-  username: string = '';
-  password: string = '';
-  loginError: string = '';
-  loginSuccess: string = '';
-  loginSubscription: Subscription | undefined;
+export class LoginComponent implements OnInit {
+ 
+  user: Login = {
+    UserName: '',
+    Password: '',
+    Id:0
+    
+  };
+  registrationSuccess: boolean | undefined;
+  
+ 
+  ngOnInit(): void {
+    
+  }
 
   constructor(private expenseTrackerService: ExpensetrackerService, private router: Router) {}
 
-  login(): void {
-    this.expenseTrackerService.logIn(this.username, this.password).subscribe({
-      next: (res: any) => {
-        this.loginSuccess = "Login Successful";
-        console.log('response from component='+res);
+
+
+  login() {
+    this.expenseTrackerService.loginUser(this.user).subscribe(
+      (response) => {
+        // Check if the response status is 200
+        this.router.navigateByUrl('/home-info');
+        if (response.accessToken && response.refreshToken) {
+          this.registrationSuccess = true;
+          Swal.fire({
+            icon: 'success',
+            title: 'Login Successful',
+            text: 'User LoggedIn successfully!',
+          });
+        } else {
+          Swal.fire({
+            icon: 'error',
+            title: 'Login Failed',
+            text: 'Failed to Login!',
+          });
+        }
       },
-      error: (error: any) => {
-        console.error('Error fetching data:', error);
-        // You can provide user feedback here, such as displaying an error message
+      (error: any) => { // Explicitly define the type of 'error'
+        console.error('Error occurred while login:', error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'An error occurred while login!',
+        });
       }
-    });
-
+    );
   }
-
-  ngOnDestroy(): void {
-    // Unsubscribe from the login observable to prevent memory leaks
-    if (this.loginSubscription) {
-      this.loginSubscription.unsubscribe();
-    }
-  }
-}
-function login() {
-  throw new Error('Function not implemented.');
+  
 }
 
