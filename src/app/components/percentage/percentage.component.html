@@ -1,16 +1,23 @@
-<div class="xox">
-<form #form="ngForm" (ngSubmit)="getExpensePercentages()" class="mt-4" style="width: 500px !important;">
+<div class="main-container">
+
+<div class="form">
+<form #form="ngForm" (ngSubmit)="getExpensePercentages()" style="width: 500px !important;">
   <label for="userId">Enter User ID:</label>
   <input type="number" id="userId" name="userId" [(ngModel)]="userId">
-  <button type="submit">Get Percentage</button>
+  <button type="submit" id="userId">Get Percentage</button>
 </form>
-
-<div *ngIf="expensePercentages" class="expercentage">
-  <h3>Expense Percentages</h3>
+</div>
+<div class="mid">
+  <h3>Cultivating Financial Awareness: Insights into Expense Percentages</h3>
+</div>
+<div *ngIf="expensePercentages" class="per">
+  
   <ul>
     <li *ngFor="let item of expensePercentages" class="list">
       {{ item.Category }}: {{ item.Percentage }}
     </li>
   </ul>
+
 </div>
+
 </div>

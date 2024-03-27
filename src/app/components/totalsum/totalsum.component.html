@@ -1,5 +1,7 @@
-
-  <h2>Total Sum</h2>
+<div class="main-container">
+<div class="header">
+    <h3>Analyzing Total Expenditure: Unveiling the Sum </h3>
+  </div>
 
   <div class="totalsum">
   <form #form="ngForm" (ngSubmit)="getTotalSum()" class="form-container">
@@ -21,6 +23,8 @@
 
 
   <div *ngIf="totalSum !== undefined" class="result">
-    <h3>Total Sum: {{ totalSum }}</h3>
+   <h3> Discovering the Total Sum: Unveiling Financial Insights :  {{ totalSum }}</h3>
+   
   </div>
 
+</div>
