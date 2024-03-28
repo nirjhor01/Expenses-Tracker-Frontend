@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PercentageComponent } from './components/percentage/percentage.component';
 import { ExpenditureComponent } from './components/expenditure/expenditure.component';
@@ -9,10 +9,11 @@ import { CategorysumComponent } from './components/categorysum/categorysum.compo
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { HomeInfoComponent } from './home-info/home-info.component';
+import { DashboaredComponent } from './components/dashboared/dashboared.component';
+import { LayoutComponent } from './components/layout/layout.component';
 //import { PercentageComponent } from './percentage/percentage.component';
 
 const routes: Routes = [
-  { path: '', component: AppComponent },
   { path: 'percentage', component: PercentageComponent },
   { path: 'expenditure', component: ExpenditureComponent },
   { path: 'login', component: LoginComponent },
@@ -20,7 +21,13 @@ const routes: Routes = [
   { path: 'categorysum', component: CategorysumComponent },
   {path: 'home', component: HomeComponent},
   {path: 'register', component: RegisterComponent},
-  {path: 'home-info', component: HomeInfoComponent}
+  {path: 'home-info', component: HomeInfoComponent},
+  {path: 'layout', component: LayoutComponent},
+  {path: 'dashboard', component: DashboaredComponent},
+  {
+    path:'',redirectTo:'layout',pathMatch:'full'
+  }
+
 
 
 ];

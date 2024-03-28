@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PercentageComponent } from './components/percentage/percentage.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule, provideHttpClient } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule, provideHttpClient } from '@angular/common/http';
 import { ExpenditureComponent } from './components/expenditure/expenditure.component';
 import { LoginComponent } from './components/login/login.component';
 import { TotalsumComponent } from './components/totalsum/totalsum.component';
@@ -15,7 +15,9 @@ import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { HomeInfoComponent } from './home-info/home-info.component';
-
+import { DashboaredComponent } from './components/dashboared/dashboared.component';
+import { LayoutComponent } from './components/layout/layout.component';
+import { customInterceptor } from './services/custom.interceptor';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,8 @@ import { HomeInfoComponent } from './home-info/home-info.component';
     HomeComponent,
     RegisterComponent,
     HomeInfoComponent,
+    DashboaredComponent,
+    LayoutComponent,
 
 
   ],
@@ -41,7 +45,12 @@ import { HomeInfoComponent } from './home-info/home-info.component';
     
   ],
   providers: [
-    provideClientHydration(),provideHttpClient()
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: customInterceptor, 
+      multi: true
+    }
+    
   ],
   bootstrap: [AppComponent]
 })

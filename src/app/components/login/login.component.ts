@@ -30,11 +30,14 @@ export class LoginComponent implements OnInit {
 
 
   login() {
+    //debugger;
     this.expenseTrackerService.loginUser(this.user).subscribe(
       (response) => {
         // Check if the response status is 200
-        this.router.navigateByUrl('/home-info');
+        this.router.navigateByUrl('/dashboard');
         if (response.accessToken && response.refreshToken) {
+          localStorage.setItem('accessToken', response.accessToken);
+          localStorage.setItem('refreshToken', response.refreshToken);
           this.registrationSuccess = true;
           Swal.fire({
             icon: 'success',
