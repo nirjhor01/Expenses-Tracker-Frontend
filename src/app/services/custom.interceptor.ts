@@ -33,12 +33,12 @@ export class customInterceptor implements HttpInterceptor {
   //     })
   //   );
   // }
+
   const token = localStorage.getItem('accessToken');
   const newCloneRequest = req.clone({
     setHeaders:{
       Authorization:`Bearer ${token}`
     }
-
   })
   
   return next.handle(newCloneRequest);
