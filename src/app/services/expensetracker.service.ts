@@ -1,10 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, map } from 'rxjs';
+import { Observable, map, tap } from 'rxjs';
 import { Percentage } from '../models/expensetracker.model';
 import { Expenditure } from '../models/expenditure.model';
 import { Registration } from '../models/registration.model';
 import { Login } from '../models/login.model';
+import { Tokenss } from '../models/Tokenss.model';
 
 @Injectable({
   providedIn: 'root'
@@ -100,12 +101,16 @@ export class ExpensetrackerService {
 
 
   UserLogout(){
-   // this.refreshToken = null;
+    this.refreshToken = null;
   }
 
-  getRefreshToken(): Observable<any> {
-    return this.http.post<any>(`${this.baseApiUrl}/api/Auth/refresh-token`, {});
+  getRefreshToken(token: Tokenss): Observable<any> {
+    return this.http.post<any>(`${this.baseApiUrl}/api/Auth/refresh-token`, token).pipe(
+      tap((response: any) => console.log(response)) // Log the response
+    );
   }
+  
+  
 
 
   

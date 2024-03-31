@@ -11,6 +11,7 @@ import { RegisterComponent } from './register/register.component';
 import { HomeInfoComponent } from './home-info/home-info.component';
 import { DashboaredComponent } from './components/dashboared/dashboared.component';
 import { LayoutComponent } from './components/layout/layout.component';
+import { LogoutComponent } from './components/logout/logout.component';
 //import { PercentageComponent } from './percentage/percentage.component';
 
 const routes: Routes = [
@@ -24,9 +25,10 @@ const routes: Routes = [
   {path: 'home-info', component: HomeInfoComponent},
   {path: 'layout', component: LayoutComponent},
   {path: 'dashboard', component: DashboaredComponent},
-  {
-    path:'',redirectTo:'layout',pathMatch:'full'
-  }
+   {
+     path:'',redirectTo:'layout',pathMatch:'full'
+   },
+  {path: 'logout', component: LogoutComponent}
 
 
 

@@ -17,8 +17,9 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { HomeInfoComponent } from './home-info/home-info.component';
 import { DashboaredComponent } from './components/dashboared/dashboared.component';
 import { LayoutComponent } from './components/layout/layout.component';
-import { customInterceptor } from './services/custom.interceptor';
 import { LogoutComponent } from './components/logout/logout.component';
+import { customInterceptor } from './services/custom.interceptor';
+
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { LogoutComponent } from './components/logout/logout.component';
     DashboaredComponent,
     LayoutComponent,
     LogoutComponent,
+    
 
 
   ],
