@@ -18,6 +18,7 @@ import { HomeInfoComponent } from './home-info/home-info.component';
 import { DashboaredComponent } from './components/dashboared/dashboared.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import { customInterceptor } from './services/custom.interceptor';
+import { LogoutComponent } from './components/logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { customInterceptor } from './services/custom.interceptor';
     HomeInfoComponent,
     DashboaredComponent,
     LayoutComponent,
+    LogoutComponent,
 
 
   ],

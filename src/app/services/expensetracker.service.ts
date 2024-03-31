@@ -10,6 +10,7 @@ import { Login } from '../models/login.model';
   providedIn: 'root'
 })
 export class ExpensetrackerService {
+  private refreshToken: string | null = null;
   baseApiUrl: string ="https://localhost:44326";
 
   constructor(private http: HttpClient) { }
@@ -55,6 +56,7 @@ export class ExpensetrackerService {
     );
   }
 
+
   
 
 
@@ -92,8 +94,21 @@ export class ExpensetrackerService {
 
   loginUser(data: Login): Observable<any> {
     //const data = { userName, password };
+    console.log("Generating Token");
     return this.http.post<any>(`${this.baseApiUrl}/api/Auth/LogIn`, data);
   }
 
+
+  UserLogout(){
+   // this.refreshToken = null;
+  }
+
+  getRefreshToken(): Observable<any> {
+    return this.http.post<any>(`${this.baseApiUrl}/api/Auth/refresh-token`, {});
+  }
+
+
   
 }
+
+
