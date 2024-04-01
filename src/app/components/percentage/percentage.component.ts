@@ -13,6 +13,7 @@ export class PercentageComponent implements OnInit, OnDestroy {
   userId: number | undefined;
   expensePercentages: Percentage[] | undefined;
   private subscription: Subscription | undefined;
+  
   constructor(private expenseTrackerService: ExpensetrackerService) { }
 
 
@@ -21,6 +22,8 @@ export class PercentageComponent implements OnInit, OnDestroy {
     // Initialize userId to undefined
     this.userId = undefined;
   }
+
+
 
   getExpensePercentages(): void {
     if (!this.userId) {

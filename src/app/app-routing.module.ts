@@ -12,6 +12,7 @@ import { HomeInfoComponent } from './home-info/home-info.component';
 import { DashboaredComponent } from './components/dashboared/dashboared.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import { LogoutComponent } from './components/logout/logout.component';
+import { ScrollComponent } from './components/scroll/scroll.component';
 //import { PercentageComponent } from './percentage/percentage.component';
 
 const routes: Routes = [
@@ -28,7 +29,9 @@ const routes: Routes = [
    {
      path:'',redirectTo:'layout',pathMatch:'full'
    },
-  {path: 'logout', component: LogoutComponent}
+  {path: 'logout', component: LogoutComponent},
+  {path: 'scroll', component: ScrollComponent}
+
 
 
 

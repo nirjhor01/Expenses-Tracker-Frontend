@@ -1,11 +1,23 @@
-<!-- home.component.html -->
-<div class="container">
-    <h1>Welcome to Expense Tracker</h1>
-    <div class="button-container">
-      <a routerLink="/login" class="btn">Login</a>
-      <a routerLink="/" class="btn">Register</a>
-    </div>
+<div class="navbar">
+
+  <a routerLink="/layout" class="active">Home</a>
+
+  <div class="search-container">
+    <input type="text" placeholder="Search.." name="search">
+    <button type="button"><i class="fa fa-search"></i></button>
   </div>
 
+  <div class="login-container">
+    <button mat-button routerLink="/login" class="b1">Login</button>
+    <button mat-button routerLink="/register" class="b2">Register</button>
+  </div>
+  </div>
 
-  
+<div class="sub-navbar">
+  <a routerLink="/total" class="bn"> Total Sum</a>
+  <a routerLink="/percentage" class="bn"> percentage </a>
+  <a routerLink="/expenditure" class="bn"> Expenditure </a>
+  <a routerLink="/categorysum" class="bn"> categorysum </a>
+  <a routerLink="/logout" class="bn"> Logout </a>
+
+</div>

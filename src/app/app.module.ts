@@ -19,7 +19,9 @@ import { DashboaredComponent } from './components/dashboared/dashboared.componen
 import { LayoutComponent } from './components/layout/layout.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { customInterceptor } from './services/custom.interceptor';
-
+import { ScrollComponent } from './components/scroll/scroll.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -35,6 +37,7 @@ import { customInterceptor } from './services/custom.interceptor';
     DashboaredComponent,
     LayoutComponent,
     LogoutComponent,
+    ScrollComponent,
     
 
 
@@ -45,7 +48,8 @@ import { customInterceptor } from './services/custom.interceptor';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatIconModule
     
   ],
   providers: [
@@ -53,7 +57,8 @@ import { customInterceptor } from './services/custom.interceptor';
       provide: HTTP_INTERCEPTORS,
       useClass: customInterceptor, 
       multi: true
-    }
+    },
+    provideAnimationsAsync()
     
   ],
   bootstrap: [AppComponent]

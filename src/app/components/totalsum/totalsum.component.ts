@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { ExpensetrackerService } from '../../services/expensetracker.service';
 import { Tokenss } from '../../models/Tokenss.model';
 import { Observable, of } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, switchMap } from 'rxjs/operators';
 import { Router } from '@angular/router';
-
+import { isPlatformBrowser } from '@angular/common';
+import { Inject, PLATFORM_ID } from '@angular/core';
 @Component({
   selector: 'app-totalsum',
   templateUrl: './totalsum.component.html',
@@ -21,63 +22,64 @@ export class TotalsumComponent implements OnInit {
     refreshToken: ''
   };
 
-  constructor(private expenseTrackerService: ExpensetrackerService, private router: Router) { }
+
+  
+  // Inside your component or service
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: any,
+    private router: Router,
+    private expenseTrackerService: ExpensetrackerService
+  ) { }
 
   ngOnInit(): void {
     this.getTotalSum();
   }
 
-  getRefTokens(): Observable<any> {
+  getRefTokens(): Observable<Tokenss | null> {
     const accessToken = localStorage.getItem('accessToken');
     const refreshToken = localStorage.getItem('refreshToken');
+
     console.log('token1 = ' + accessToken, 'token2 = ' + refreshToken);
 
     if (accessToken && refreshToken) {
       this.token.accessToken = accessToken!;
       this.token.refreshToken = refreshToken!;
-
-      // Return the observable returned by getRefreshToken
       return this.expenseTrackerService.getRefreshToken(this.token).pipe(
-        catchError(error => {
-          console.error('Error refreshing tokens:', error);
-          return of(null); // Return observable with error
+        catchError((error) => {
+          this.router.navigateByUrl('/login')
+          console.error('Error fetching Token:', error);
+          return of(null);
         })
       );
-    } else {
-      // Return an observable with an error if tokens are not found
-      return of(null);
     }
+    return of(null);
   }
 
   getTotalSum(): void {
-    this.getRefTokens().subscribe(
-      () => {
-        // Tokens are successfully refreshed or retrieved
-        // Proceed with the logic to get total sum
-
-        if (!this.userId) {
-          console.error('User ID is required.');
-          return;
+    this.getRefTokens().pipe(
+      switchMap(tokens => {
+        if (tokens) {
+          localStorage.setItem('accessToken', tokens.accessToken);
+          localStorage.setItem('refreshToken', tokens.refreshToken);
+          return this.expenseTrackerService.GettotalSum(this.userId, this.fromDate, this.toDate);
+        } else {
+          return of(null); // Return an empty observable if tokens are not found
         }
+      })
+    ).subscribe({
 
-        this.expenseTrackerService.GettotalSum(this.userId, this.fromDate, this.toDate)
-          .subscribe({
-            next: (sumJson: any) => {
-              console.log('OKKK' + sumJson);
-              this.totalSum = sumJson.totalSum;
-            },
-            error: (error: any) => {
-              console.error('Error fetching expense percentages:', error);
-              // You can provide user feedback here, such as displaying an error message
-            }
-          });
+      next: (sumJson: any) => {
+        if (sumJson != null) {
+          console.log('Got the sum:', sumJson.totalSum);
+          this.totalSum = sumJson.totalSum;
+        } else {
+          console.error('Invalid response format:', sumJson);
+        }
       },
-      (error) => {
-        // Error occurred or tokens are not found
-        console.error('Error refreshing or retrieving tokens:', error);
-        // Navigate to the logout page
-        this.router.navigate(['/logout']);
+      error: (error: any) => {
+        console.error('Error fetching total sum:', error);
       }
-    );
+
+    });
   }
 }

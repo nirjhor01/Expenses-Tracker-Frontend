@@ -1,0 +1,13 @@
+/* styles.css */
+.scroll-container {
+    width: 100%; /* Adjust as needed */
+    height: 200px; /* Adjust as needed */
+    overflow-x: auto; /* Enable horizontal scrolling */
+    white-space: nowrap; /* Prevent wrapping of content */
+    border: 1px solid #ccc; /* Optional: Add border for visualization */
+  }
+  
+  .scroll-content {
+    display: inline-flex; /* Ensure child components are displayed in a row */
+  }
+  
