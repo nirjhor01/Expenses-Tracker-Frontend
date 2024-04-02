@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ExpensetrackerService } from '../../services/expensetracker.service';
 import { Tokenss } from '../../models/Tokenss.model';
-import { Observable, of } from 'rxjs';
+import { Observable, of, throwError } from 'rxjs';
 import { catchError, switchMap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { isPlatformBrowser } from '@angular/common';
@@ -35,25 +35,52 @@ export class TotalsumComponent implements OnInit {
     this.getTotalSum();
   }
 
+  // getRefTokens(): Observable<Tokenss | null> {
+  //   const accessToken = localStorage.getItem('accessToken');
+  //   const refreshToken = localStorage.getItem('refreshToken');
+
+  //   console.log('token1 = ' + accessToken, 'token2 = ' + refreshToken);
+
+  //   if (accessToken && refreshToken) {
+  //     this.token.accessToken = accessToken!;
+  //     this.token.refreshToken = refreshToken!;
+  //     return this.expenseTrackerService.getRefreshToken(this.token).pipe(
+  //       catchError((error) => {
+  //         this.router.navigateByUrl('/login')
+  //         console.error('Error fetching Token:', error);
+  //         return of(null);
+  //       })
+  //     );
+  //   }
+  //   return of(null);
+  // }
   getRefTokens(): Observable<Tokenss | null> {
     const accessToken = localStorage.getItem('accessToken');
     const refreshToken = localStorage.getItem('refreshToken');
-
+  
     console.log('token1 = ' + accessToken, 'token2 = ' + refreshToken);
-
+  
     if (accessToken && refreshToken) {
       this.token.accessToken = accessToken!;
       this.token.refreshToken = refreshToken!;
+  
       return this.expenseTrackerService.getRefreshToken(this.token).pipe(
         catchError((error) => {
-          this.router.navigateByUrl('/login')
-          console.error('Error fetching Token:', error);
-          return of(null);
+          if (error.status === 401) {
+            // Handle unauthorized error (status code 401)
+            alert('Unauthorized access. Please log in again.');
+            this.router.navigateByUrl('/login');
+          } else {
+            console.error('Error fetching Token:', error);
+          }
+          return throwError(error); // Rethrow the error
         })
       );
     }
     return of(null);
   }
+
+
 
   getTotalSum(): void {
     this.getRefTokens().pipe(
@@ -61,6 +88,7 @@ export class TotalsumComponent implements OnInit {
         if (tokens) {
           localStorage.setItem('accessToken', tokens.accessToken);
           localStorage.setItem('refreshToken', tokens.refreshToken);
+          console.log('working log token');
           return this.expenseTrackerService.GettotalSum(this.userId, this.fromDate, this.toDate);
         } else {
           return of(null); // Return an empty observable if tokens are not found

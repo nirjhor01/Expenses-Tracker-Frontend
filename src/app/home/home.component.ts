@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { TotalsumComponent } from '../components/totalsum/totalsum.component';
+
 
 @Component({
   selector: 'app-home',
